@@ -13,6 +13,7 @@ def get_json(symbol_name):
     """
     get_csv = requests.get(
         'https://query1.finance.yahoo.com/v7/finance/download/%s?period1=1277769600&period2=1624492800&interval=1d&events=history&includeAdjustedClose=true' % symbol_name)
+    os.makedirs('output', exist_ok=True)
     file_path = os.path.join('output', symbol_name + '.csv')
     if get_csv.status_code == 200:
         with open(file_path, 'wb') as csv_file:
