@@ -133,3 +133,6 @@ dmypy.json
 
 # Ignore csv files
 *.csv
+
+# DB
+*.db
