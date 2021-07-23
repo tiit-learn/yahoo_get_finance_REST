@@ -62,7 +62,7 @@ def get_json(symbol_name):
             update_in_db(symbol_name, json_data)
         else:
             save_to_db(symbol_name, json_data)
-        return json.dumps(data_dict, indent=4)
+        return json_data
     return json.dumps({})
 
 
@@ -107,7 +107,7 @@ def home():
 
 @ app.route('/api/1.0/get/<string:symbol_name>', methods=['GET'])
 def get_data(symbol_name):
-    return get_json(symbol_name)
+    return json.loads(get_json(symbol_name))
 
 
 @ app.route('/api/1.0/testing', methods=['GET'])
@@ -138,4 +138,4 @@ def test_symbols():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4545, debug=True)
+    app.run(host='0.0.0.0', debug=True)
